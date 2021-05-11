@@ -1,7 +1,12 @@
 module arguments.parser;
 
 import std.stdio;
+import std.string;
+import std.stdio;
+import std.array;
+
 import utils.string;
+import error.error;
 
 class ArgumentParser {
     // the command line arguments
@@ -48,10 +53,17 @@ class ArgumentParser {
 
             // Checks if the command starts with double
             // hiphens(-)
-            bool isValidCommand = StringUtilities.startsWith(current, "--");
+            immutable bool isValidCommand = StringUtilities.startsWith(current, "--");
             if(!isValidCommand){
                 throw new Exception(current~" is not a valid argument");
             }
+
+            string[] data = current.split("=");
+            if(data.length !is 2){
+                QuiltException error = new QuiltException("Unexpected argument parameter", true);
+            }
+
+            parameters[data[0]] = data[1];
 
             this.position += 1;
             current = this.currentCharacter();

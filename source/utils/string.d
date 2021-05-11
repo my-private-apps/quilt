@@ -22,4 +22,19 @@ abstract class StringUtilities {
         }
         return returnStringValue;
     }
+
+    public static string[] split(string data, char separator){
+        string[] components = [];
+        string current_string = "";
+        for(int index=0; index<cast(int) data.length; index++){
+            char current_character = data[index];
+            if(current_character == separator){
+                components ~= current_string;
+                current_string = "";
+            } else {
+                current_string ~= current_character;
+            }
+        }
+        return components;
+    }
 }
