@@ -8,6 +8,18 @@ import std.array;
 import utils.string;
 import error.error;
 
+class ArgumentParseResults {
+    public immutable string command;
+    public string[string] params;
+    public string[] arguments;
+
+    this(string command, string[string] parameters, string[] args){
+        this.command = command;
+        this.params = parameters;
+        this.arguments = args;
+    }
+}
+
 class ArgumentParser {
     // the command line arguments
     private string[] arguments;
@@ -24,10 +36,11 @@ class ArgumentParser {
         this.arguments = arguments;
         this.length = cast(int) this.arguments.length;
 
-        this.createArgumentParser(this.arguments);
+        ArgumentParseResults results =  this.createArgumentParser(this.arguments);
+        writeln(results.params, results.arguments);
     }
 
-    private int createArgumentParser(string[] arguments) {
+    private ArgumentParseResults createArgumentParser(string[] arguments) {
         string[] args = [];
         bool argsEnabled = false;
         string current = this.currentCharacter();
@@ -51,6 +64,20 @@ class ArgumentParser {
                 continue;
             }
 
+            if(argsEnabled){
+                args ~= current;
+                this.position += 1;
+                current = this.currentCharacter();
+                continue;
+            }
+
+            if(current == "--"){
+                argsEnabled = true;
+                this.position += 1;
+                current = this.currentCharacter();
+                continue;
+            }
+
             // Checks if the command starts with double
             // hiphens(-)
             immutable bool isValidCommand = StringUtilities.startsWith(current, "--");
@@ -69,8 +96,7 @@ class ArgumentParser {
             current = this.currentCharacter();
         }
 
-        writeln(command, parameters);
-        return 0;
+        return new ArgumentParseResults(command, parameters, args);
     }
 
     private string currentCharacter() {
