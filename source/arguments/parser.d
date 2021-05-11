@@ -1,6 +1,7 @@
 module arguments.parser;
 
 import std.stdio;
+import utils.string;
 
 class ArgumentParser {
     // the command line arguments
@@ -43,6 +44,11 @@ class ArgumentParser {
                 this.position += 1;
                 current = this.currentCharacter();
                 continue;
+            }
+
+            bool isValidCommand = StringUtilities.startsWith(current, "--");
+            if(!isValidCommand){
+                throw new Exception(current, " is not a valid argument");
             }
 
             this.position += 1;

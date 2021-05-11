@@ -1,4 +1,4 @@
-dmd source/app.d source/arguments/parser.d -of=dist/app
+dmd source/app.d source/arguments/parser.d E:\eseh\source\utils\string.d -of=dist/app
 cd dist
-app E:\eseh\examples\main.eseh
+app run --file=E:\eseh\examples\main.eseh
 cd ..
