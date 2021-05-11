@@ -26,13 +26,30 @@ class ArgumentParser {
         bool argsEnabled = false;
         string current = this.currentCharacter();
         string[string] parameters;
+        string command;
 
         while(current !is null){
-            writeln(current);
+            // If the posiition is 0 or if the current
+            // character is the executable name, skip the
+            // argument and go to the next
+            if(this.position == 0){
+                this.position += 1; 
+                current = this.currentCharacter();
+                continue;
+            }
+
+            if(this.position == 1){
+                command = current;
+                this.position += 1;
+                current = this.currentCharacter();
+                continue;
+            }
 
             this.position += 1;
             current = this.currentCharacter();
         }
+
+        writeln(command, parameters);
         return 0;
     }
 
