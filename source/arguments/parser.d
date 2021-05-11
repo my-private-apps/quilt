@@ -9,8 +9,24 @@ import utils.string;
 import error.error;
 
 class ArgumentParseResults {
+    /**
+    the command the the user want to run
+    Eg :- run, install , fetch etc*/
     public immutable string command;
+
+    /**
+    the parameters or flags and associated values
+    passed in along with the command'
+    Eg := --data=<data>
+    */
     public string[string] params;
+
+    /**
+    // the command line parameter that the
+    // user wants to pass in into the original
+    // program
+    // Eg :- <cli> <command> --flag1=<value> -- <arg1> <arg2>
+    */
     public string[] arguments;
 
     this(string command, string[string] parameters, string[] args){
@@ -64,6 +80,10 @@ class ArgumentParser {
                 continue;
             }
 
+            // If argsEnabled is true(It gives us the permission)
+            // to capture command line arguments
+            // This will be enabled if the parser encounters
+            // double hiphens(--)
             if(argsEnabled){
                 args ~= current;
                 this.position += 1;
