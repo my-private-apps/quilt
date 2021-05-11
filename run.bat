@@ -1,4 +1,1 @@
-dmd source/app.d source/arguments/parser.d E:\eseh\source\utils\string.d -of=dist/app
-cd dist
-app run --file=E:\eseh\examples\main.eseh
-cd ..
+dub run --arch=x86 -- run --file=E:\eseh\examples\main.eseh

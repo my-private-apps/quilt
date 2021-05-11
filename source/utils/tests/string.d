@@ -3,6 +3,6 @@ module utils.tests.string;
 import utils.string;
 import std.stdio;
 
-void main(string[] data){
+void testStringSlice(){
     writeln(StringUtilities.slice("Helllo", 2));
 }

@@ -46,9 +46,11 @@ class ArgumentParser {
                 continue;
             }
 
+            // Checks if the command starts with double
+            // hiphens(-)
             bool isValidCommand = StringUtilities.startsWith(current, "--");
             if(!isValidCommand){
-                throw new Exception(current, " is not a valid argument");
+                throw new Exception(current~" is not a valid argument");
             }
 
             this.position += 1;
