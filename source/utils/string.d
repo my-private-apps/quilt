@@ -1,5 +1,6 @@
 module utils.string;
 
+
 abstract class StringUtilities {
     // Check if a string starts with a specific string
     // Find the length of the [check] string and 

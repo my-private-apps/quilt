@@ -1,2 +1,1 @@
-# eseh
-Mini shell
+# Quit
