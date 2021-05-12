@@ -9,12 +9,11 @@ abstract class NumberUtilities {
     // first sorting the array and then find the sum
     // using arithmetic progression
     // n(n+1)/2 where n is the last member of the array
-    public static double createIterableSum(double[] values){
-        double[] sortedValues = values.sort();
-        if(sortedValues.length == 0){
+    public static auto createIterableSum(double[] values){
+        if(values.length == 0){
             return 0;
         }
-        int lastMember = sortedValues[(cast(int) sortedValues.length)-1];
+        double n = values[(cast(int) values.length)-1];
         return (n*(n+1))/2;
     }
 }

@@ -7,6 +7,7 @@ import std.array;
 
 import utils.string;
 import error.error;
+import arguments.perform;
 
 class ArgumentParseResults {
     /**
@@ -53,7 +54,7 @@ class ArgumentParser {
         this.length = cast(int) this.arguments.length;
 
         ArgumentParseResults results =  this.createArgumentParser(this.arguments);
-        writeln(results.params, results.arguments);
+        performCommandActions(results.command, results.params, results.arguments);
     }
 
     private ArgumentParseResults createArgumentParser(string[] arguments) {
