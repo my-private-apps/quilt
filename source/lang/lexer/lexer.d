@@ -16,8 +16,12 @@ class QuiltLexer {
         this.data = data;
     }
 
+    // Tokenise the string into different lexer
+    // tokens which can be used for evaluation
     public Token[] tokenise() {
         char current = this.currentCharacter();
+        // Keep on checking for characters
+        // until the end of the file
         while(current){
             if(current == '\n'){
                 const tokenString = "" ~ current;
@@ -29,6 +33,8 @@ class QuiltLexer {
         return this.tokens;
     }
 
+    // get the element at the current index in
+    // the iterable
     private char currentCharacter(){
         if(this.position.position == this.data.length){
             exit(0);
