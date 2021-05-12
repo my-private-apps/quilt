@@ -1,6 +1,7 @@
 module lang.lexer.token;
 
-struct Token {
+struct Token
+{
     // The value of the token
     // value = 4, 5, 6 etc
     private string value;
@@ -12,15 +13,18 @@ struct Token {
     // The starting position of token
     private int position;
 
-    public string getValue() {
+    public string getValue()
+    {
         return this.value;
     }
 
-    public string type(){
+    public string type()
+    {
         return this.tokenType;
     }
 
-    public int getPos(){
+    public int getPos()
+    {
         return this.position;
     }
 }

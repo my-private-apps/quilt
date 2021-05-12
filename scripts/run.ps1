@@ -1,0 +1,1 @@
+dub run --arch=x86 -- run --file=E:\eseh\examples\main.eseh --lol=true -- hello world
