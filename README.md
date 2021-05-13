@@ -2,7 +2,7 @@
 
 <br />
 <p align="center">
-  <img src="https://github.com/pranavbaburaj/quilt/blob/main/assets/logo.png?raw=true" aly="logo">
+  <img src="https://github.com/pranavbaburaj/quilt/blob/main/assets/logo%20(1).png?raw=true" aly="logo">
   <h3 align="center">Quilt</h3>
 
   <p align="center">
