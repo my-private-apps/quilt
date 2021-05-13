@@ -31,7 +31,6 @@ class QuiltLexer
         // until the end of the file
         while (current !is '\x08')
         {
-            writeln(current);
             if (current == '\n')
             {
                 string character = "" ~ current;

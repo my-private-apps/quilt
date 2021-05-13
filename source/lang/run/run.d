@@ -5,6 +5,7 @@ import std.file;
 
 import error.error;
 import lang.lexer.lexer;
+import lang.lexer.token;
 
 class QuitRunCommand
 {
@@ -40,7 +41,10 @@ class QuitRunCommand
                 file.close();
 
                 QuiltLexer lexer = new QuiltLexer(source);
-                writeln(lexer.tokenise()
+                Token[] tokens = lexer.tokenise();
+                for(int x=0; x<tokens.length; x++){
+                    writeln(tokens[x].value);
+                }
             }
             else
             {
