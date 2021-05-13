@@ -11,7 +11,9 @@ import utils.string;
 import error.error;
 
 class NumberToken(NumberType){
+    // The number token with the value
     public NumberType number;
+    // the end position of the nmber
     public int position;
 
     this(NumberType number, int position){
