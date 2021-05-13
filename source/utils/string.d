@@ -47,4 +47,14 @@ abstract class StringUtilities
         }
         return components;
     }
+
+    public static int count(string data, char character){
+        int count = 0;
+        for(int index=0; index<data.length; index++){
+            if(data[index] == character){
+                count += 1;
+            }
+        }
+        return count;
+    }
 }

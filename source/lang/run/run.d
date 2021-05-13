@@ -40,7 +40,7 @@ class QuitRunCommand
                 file.close();
 
                 QuiltLexer lexer = new QuiltLexer(source);
-                writeln(lexer.tokenise());
+                writeln(lexer.tokenise()
             }
             else
             {

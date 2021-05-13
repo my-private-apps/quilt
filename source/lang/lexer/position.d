@@ -1,5 +1,15 @@
 module lang.lexer.position;
 
+// Get the current character based on
+// the current position
+char currentCharacter(string data, int position){
+    if(data.length == position){
+        return '\x08';
+    } else {
+        return data[position];
+    }
+}
+
 class Position
 {
     public int position;

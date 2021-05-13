@@ -1,12 +1,14 @@
 module lang.lexer.lexer;
 
 import std.stdio;
+import std.conv;
 
 import lang.lexer.position;
 import lang.lexer.token;
 import utils.arrays;
+import lang.lexer.tokens.number;
 
-const char[] digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+const char[] digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'];
 
 class QuiltLexer
 {
@@ -32,12 +34,15 @@ class QuiltLexer
             writeln(current);
             if (current == '\n')
             {
-                const tokenString = "" ~ current;
-                this.tokens ~= Token(tokenString, "NEWLINE", this.position.position);
+                string character = "" ~ current;
+                this.tokens ~= new Token(character, "NEWLINE", this.position.position);
             }
             else if (ArrayUtilities.contains!char(digits, current))
             {
-
+                Numbers number = new Numbers(this.data, this.position.position);
+                NumberToken!double data = number.createNumber();
+                this.tokens ~= new Token(to!string(data.number), "NUMBER", data.position);
+                this.position = new Position(data.position);
             }
             this.position.increment(1);
             current = this.currentCharacter();
