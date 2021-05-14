@@ -1,3 +1,4 @@
+import 'package:quilt/exception/exception.dart' as error;
 
 class QuiltArgumentParser {
   int position = 0;
@@ -11,38 +12,58 @@ class QuiltArgumentParser {
     var cli = [];
     var enabled = false;
     String command;
-    Map<String, String> params;
+    var params = Map<String, String>();
 
     var character = currentCharacter();
-    while(character != null) {
+    while(character != '\n') {
       if(position == 0){
         command = character;
         position += 1;
         character = currentCharacter();
+        continue;
       }
 
       if(enabled){
         cli.add(character);
         position += 1;
         character = currentCharacter();
+        continue;
       }
 
       if(character == '--'){
         enabled = true;
         position += 1;
         character = currentCharacter();
+        continue;
       }
 
-      var isValidCommand = character.startsWith('--');
+      if(character == '\n'){ break; }
+
+      if(!character.startsWith('--')){
+        var exception = error.QuiltException('$character not a valid argument');
+        exception.raise(true);
+      }
+
+      var data = character.split('=');
+      if(data.length < 2) {
+        var exception = error.QuiltException('Lacking characters after or before =');
+        exception.raise(true);
+      }
+
+      var key = data[0];
+      data = data.sublist(1, data.length);
+      params[key.toString()] = data.join('=');
 
       position += 1;
       character = currentCharacter();
     }
+
+    print('$command, $params $cli');
   }
 
   String currentCharacter() {
     if(position == arguments.length){
-      return null;
+      return '\n';
     } else {
       return arguments[position];
     }
