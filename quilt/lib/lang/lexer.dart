@@ -1,7 +1,7 @@
 import 'package:quilt/lang/position.dart' as position;
 import 'package:quilt/exception/exception.dart' as error;
 
-const digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'];
+const digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '_'];
 
 class Token {
   dynamic value;
@@ -69,6 +69,15 @@ class LexicalAnalyser {
     }
     if (numberString.endsWith('.')) {
       numberString += '0';
+    }
+
+    if(numberString.endsWith('_')){
+      var exception = error.QuiltException('Invalid token $numberString');
+      exception.raise(true);
+    }
+    
+    if(numberString.startsWith('_')){
+      return Token(numberString, 'NAME');
     }
 
     return Token(numberString, 'NUMBER');
