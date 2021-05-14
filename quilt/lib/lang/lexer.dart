@@ -1,5 +1,6 @@
 import 'package:quilt/lang/position.dart' as position;
 import 'package:quilt/exception/exception.dart' as error;
+import 'package:quilt/lang/lexer/tokens/comments.dart' as comments;
 
 const digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '_'];
 
@@ -25,10 +26,15 @@ class LexicalAnalyser {
   List<Token> tokenise() {
     var character = currentCharacter();
     while (character != null) {
+      print(character);
       if (character == '\n') {
         tokens.add(Token(character, 'NEWLINE'));
       } else if (digits.contains(character)) {
-        tokens.add(createNumbers());
+        var token = createNumbers();
+        print(token.value);
+        tokens.add(token);
+      } else if(character == '#'){
+        pos.position = comments.QuiltComments(data, pos.position).createQuiltComments();
       }
 
       pos.increment();

@@ -20,7 +20,7 @@ class QuiltRunCommand {
         exception.raise(true);
       }
       file.readAsString().then((String content) {
-        var tokens = lexer.LexicalAnalyser(content).tokenise();
+        var tokens = lexer.LexicalAnalyser('$content\n').tokenise();
         tokens.forEach((element) {
           stdout.write(element.value + ' ' + element.type);
         });

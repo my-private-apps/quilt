@@ -1,1 +1,3 @@
-dub run --arch=x86 -- run --file=E:\eseh\examples\main.eseh --lol=true -- hello world
+cd quilt
+dart bin/quilt.dart run --file=E:\eseh\examples\main.eseh
+cd ..
