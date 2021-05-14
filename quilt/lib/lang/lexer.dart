@@ -32,10 +32,12 @@ class LexicalAnalyser {
       } else if (digits.contains(character)) {
         var token = createNumbers();
         tokens.add(token);
-      } else if(character == '#'){
-        pos.position = comments.QuiltComments(data, pos.position).createQuiltComments();
-      } else if(['"', "'", '`'].contains(character)) {
-        var stringdata = strings.QuiltStringLiterals(data, pos.position).createQuiltStrings(character);
+      } else if (character == '#') {
+        pos.position =
+            comments.QuiltComments(data, pos.position).createQuiltComments();
+      } else if (['"', "'", '`'].contains(character)) {
+        var stringdata = strings.QuiltStringLiterals(data, pos.position)
+            .createQuiltStrings(character);
         pos.position = stringdata['position'];
         tokens.add(stringdata['token']);
       }
@@ -80,12 +82,12 @@ class LexicalAnalyser {
       numberString += '0';
     }
 
-    if(numberString.endsWith('_')){
+    if (numberString.endsWith('_')) {
       var exception = error.QuiltException('Invalid token $numberString');
       exception.raise(true);
     }
-    
-    if(numberString.startsWith('_')){
+
+    if (numberString.startsWith('_')) {
       return Token(numberString, 'NAME');
     }
 
