@@ -1,5 +1,6 @@
-import 'package:quilt/quilt.dart' as quilt;
+import 'package:quilt/arguments/parser.dart' as quilt;
 
 void main(List<String> arguments) {
-  print('Hello world: ${quilt.calculate()}!');
+  var parser = quilt.QuiltArgumentParser(arguments);
+  parser.create();
 }
