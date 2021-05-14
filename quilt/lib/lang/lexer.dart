@@ -7,7 +7,7 @@ class Token {
   dynamic value;
   String type;
 
-  Token(dynamic value, String type){
+  Token(dynamic value, String type) {
     this.value = value;
     this.type = type;
   }
@@ -18,16 +18,16 @@ class LexicalAnalyser {
   position.Position pos = position.Position(0);
   List<Token> tokens = [];
 
-  LexicalAnalyser(String data){
+  LexicalAnalyser(String data) {
     this.data = data;
   }
 
   List<Token> tokenise() {
     var character = currentCharacter();
-    while(character != null){
-      if(character == '\n'){
+    while (character != null) {
+      if (character == '\n') {
         tokens.add(Token(character, 'NEWLINE'));
-      } else if(digits.contains(character)) {
+      } else if (digits.contains(character)) {
         tokens.add(createNumbers());
       }
 
@@ -38,7 +38,7 @@ class LexicalAnalyser {
   }
 
   String currentCharacter() {
-    if(data.length == pos.position){
+    if (data.length == pos.position) {
       return null;
     } else {
       return data[pos.position];
@@ -50,23 +50,24 @@ class LexicalAnalyser {
     var character = currentCharacter();
     var dots = 0;
 
-    while(character != null && digits.contains(character)){
+    while (character != null && digits.contains(character)) {
       numberString += character;
-      if(character == '.') {
+      if (character == '.') {
         dots += 1;
       }
       pos.increment();
       character = currentCharacter();
     }
-    if(dots > 1){
-      var exception = error.QuiltException('$numberString contains more than one decimal points');
+    if (dots > 1) {
+      var exception = error.QuiltException(
+          '$numberString contains more than one decimal points');
       exception.raise(true);
     }
 
-    if(numberString.startsWith('.')){
+    if (numberString.startsWith('.')) {
       numberString = '0' + numberString;
-    } 
-    if(numberString.endsWith('.')){
+    }
+    if (numberString.endsWith('.')) {
       numberString += '0';
     }
 
