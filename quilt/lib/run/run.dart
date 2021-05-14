@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:quilt/exception/exception.dart' as error;
+import 'package:quilt/lang/lexer.dart' as lexer;
 
 class QuiltRunCommand {
   Map<String, String> params;
@@ -18,8 +19,9 @@ class QuiltRunCommand {
         var exception = error.QuiltException('$filename does not exist');
         exception.raise(true);
       }
-      file.readAsString().then((String content) => {
-        
+      file.readAsString().then((String content) {
+        var tokens = lexer.LexicalAnalyser(content).tokenise();
+        print(tokens);
       });
     }
   }
