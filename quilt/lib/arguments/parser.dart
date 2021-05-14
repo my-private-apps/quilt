@@ -1,4 +1,5 @@
 import 'package:quilt/exception/exception.dart' as error;
+import 'package:quilt/arguments/perform.dart' as perform;
 
 class QuiltArgumentParser {
   int position = 0;
@@ -58,7 +59,7 @@ class QuiltArgumentParser {
       character = currentCharacter();
     }
 
-    print('$command, $params $cli');
+    perform.performCommand(command, params, cli);
   }
 
   String currentCharacter() {
