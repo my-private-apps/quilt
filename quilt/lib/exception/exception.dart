@@ -8,7 +8,7 @@ class QuiltException {
   }
 
   void raise(bool fatal) {
-    stdout.write(message + '\n');
+    print(message + '\n');
     exit(1);
   }
 }
