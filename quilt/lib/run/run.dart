@@ -21,7 +21,9 @@ class QuiltRunCommand {
       }
       file.readAsString().then((String content) {
         var tokens = lexer.LexicalAnalyser(content).tokenise();
-        print(tokens);
+        tokens.forEach((element) {
+          stdout.write(element.value + ' ' + element.type);
+        });
       });
     }
   }

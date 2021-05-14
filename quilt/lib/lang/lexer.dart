@@ -1,4 +1,7 @@
 import 'package:quilt/lang/position.dart' as position;
+import 'package:quilt/exception/exception.dart' as error;
+
+const digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'];
 
 class Token {
   dynamic value;
@@ -24,7 +27,9 @@ class LexicalAnalyser {
     while(character != null){
       if(character == '\n'){
         tokens.add(Token(character, 'NEWLINE'));
-      } 
+      } else if(digits.contains(character)) {
+        tokens.add(createNumbers());
+      }
 
       pos.increment();
       character = currentCharacter();
@@ -38,5 +43,33 @@ class LexicalAnalyser {
     } else {
       return data[pos.position];
     }
+  }
+
+  Token createNumbers() {
+    var numberString = '';
+    var character = currentCharacter();
+    var dots = 0;
+
+    while(character != null && digits.contains(character)){
+      numberString += character;
+      if(character == '.') {
+        dots += 1;
+      }
+      pos.increment();
+      character = currentCharacter();
+    }
+    if(dots > 1){
+      var exception = error.QuiltException('$numberString contains more than one decimal points');
+      exception.raise(true);
+    }
+
+    if(numberString.startsWith('.')){
+      numberString = '0' + numberString;
+    } 
+    if(numberString.endsWith('.')){
+      numberString += '0';
+    }
+
+    return Token(numberString, 'NUMBER');
   }
 }
