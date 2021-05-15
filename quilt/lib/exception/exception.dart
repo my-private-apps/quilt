@@ -11,4 +11,4 @@ class QuiltException {
     print(message + '\n');
     exit(1);
   }
-}
+}                    
