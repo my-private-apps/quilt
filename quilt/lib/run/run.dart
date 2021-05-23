@@ -24,7 +24,8 @@ class QuiltRunCommand {
         tokens.forEach((element) {
           stdout.write(element.value + ' ' + element.type);
         });
-      }).catchError((var errorMesage) {
+      }).catchError((var errorMessage) {
+        print(errorMessage);
         var exception = error.QuiltException('An unexpected error occured');
         exception.raise(true);
       });

@@ -1,4 +1,3 @@
-
 import 'dart:io';
 
 /// Error objects thrown in the case of a program failure.
@@ -6,7 +5,7 @@ import 'dart:io';
 /// An `Error` object represents a program failure that the programmer
 /// should have avoided.
 ///
-/// Examples include using single quotations for strings of length 
+/// Examples include using single quotations for strings of length
 /// greater than 1
 ///
 
@@ -16,7 +15,8 @@ class QuiltRuntimeException {
   String _file;
   int _linenumber;
 
-  QuiltRuntimeException(String message, String type, String file, int line, bool isFatal){
+  QuiltRuntimeException(
+      String message, String type, String file, int line, bool isFatal) {
     _exceptionMessage = message;
     _exceptionType = type;
     _file = file;
@@ -29,7 +29,7 @@ class QuiltRuntimeException {
   /// program if the error is a fatal error
   void _raiseQuiltException(bool isFatal) {
     print('[$_file :$_linenumber]$_exceptionMessage');
-    if(isFatal) {
+    if (isFatal) {
       exit(1);
     }
   }
