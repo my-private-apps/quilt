@@ -10,7 +10,7 @@ void performCommand(
   if (command == 'run') {
     var app = run.QuiltRunCommand(params, cli);
     app.run();
-  } else if(command == 'repl'){
+  } else if (command == 'repl') {
     var cli = repl.QuiltRepl.create();
   }
 }

@@ -10,14 +10,13 @@ List<dynamic> validTokenCharacters() {
   var tokens = [];
   var character_a = 'A'.codeUnitAt(0);
   var character_z = 'Z'.codeUnitAt(0);
-  for(var index=character_a; index <= character_z; index++) {
+  for (var index = character_a; index <= character_z; index++) {
     tokens.add(String.fromCharCode(index));
   }
 
-  
   character_a = 'a'.codeUnitAt(0);
   character_z = 'z'.codeUnitAt(0);
-  for(var index=character_a; index <= character_z; index++) {
+  for (var index = character_a; index <= character_z; index++) {
     tokens.add(String.fromCharCode(index));
   }
 
@@ -67,7 +66,7 @@ class LexicalAnalyser {
         tokens.add(Token(token.identifierName, 'NAME'));
         pos.position = token.position;
       }
-      
+
       pos.increment();
       character = currentCharacter();
     }

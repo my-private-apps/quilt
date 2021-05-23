@@ -30,7 +30,7 @@ class Identifier {
     var character = char.CurrentCharacter.character(_data, _position);
     var valid = lexer.validTokenCharacters();
     var identifierName = '';
-    while(character != null){
+    while (character != null) {
       // if(character == ' ') break;
       if (!valid.contains(character)) {
         break;
@@ -41,7 +41,7 @@ class Identifier {
       character = char.CurrentCharacter.character(_data, _position);
     }
 
-    if(identifierName.isEmpty) {
+    if (identifierName.isEmpty) {
       error.QuiltException('Identifer name cannot be empty').raise(true);
     }
 

@@ -1,4 +1,3 @@
-
 abstract class CurrentCharacter {
   static String character(String data, int position) {
     if (data.length == position) {
