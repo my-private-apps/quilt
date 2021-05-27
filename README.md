@@ -1,5 +1,4 @@
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/fcb21c071ad34daa9839592adf3743a5)](https://app.codacy.com/gh/pranavbaburaj/quilt?utm_source=github.com&utm_medium=referral&utm_content=pranavbaburaj/quilt&utm_campaign=Badge_Grade_Settings)
 
 <!-- PROJECT LOGO -->
 
@@ -24,6 +23,7 @@
     <img src="https://img.shields.io/github/last-commit/pranavbaburaj/quilt">
     <a href="https://twitter.com/intent/tweet?text=Quilturl=https://github.com/pranavbaburaj/quilt&via=baburaj_pranav&hashtags=developers,polyglot,language"><img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social"></a>
     <img src="https://tokei.rs/b1/github/pranavbaburaj/quilt">
+    <img src="https://api.codacy.com/project/badge/Grade/fcb21c071ad34daa9839592adf3743a5">
   </p>
 
   <br />
