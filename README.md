@@ -1,3 +1,6 @@
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/fcb21c071ad34daa9839592adf3743a5)](https://app.codacy.com/gh/pranavbaburaj/quilt?utm_source=github.com&utm_medium=referral&utm_content=pranavbaburaj/quilt&utm_campaign=Badge_Grade_Settings)
+
 <!-- PROJECT LOGO -->
 
 <br />
