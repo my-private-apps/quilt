@@ -3,8 +3,10 @@ import 'package:quilt/lang/position.dart' as position;
 import 'package:quilt/exception/exception.dart' as error;
 import 'package:quilt/lang/lexer/tokens/comments.dart' as comments;
 import 'package:quilt/lang/lexer/tokens/string.dart' as strings;
+// import 'package:quilt/lang/keywords.dart' as keyword;
 
 const digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '_'];
+
 
 List<dynamic> validTokenCharacters() {
   var tokens = [];
@@ -48,7 +50,7 @@ class LexicalAnalyser {
     var character = currentCharacter();
     while (character != null) {
       if (character == '\n') {
-        tokens.add(Token(character, 'NEWLINE'));
+        // tokens.add(Token(character, 'NEWLINE'));
       } else if (digits.contains(character) && character != '_') {
         var token = createNumbers();
         tokens.add(token);
@@ -65,6 +67,8 @@ class LexicalAnalyser {
         var token = createIdentifer.createIdentifier();
         tokens.add(Token(token.identifierName, 'NAME'));
         pos.position = token.position;
+      } else if(character == '=') {
+        tokens.add(Token('=', 'ASSIGN'));
       }
 
       pos.increment();

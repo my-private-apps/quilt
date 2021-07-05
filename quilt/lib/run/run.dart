@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:quilt/exception/exception.dart' as error;
 import 'package:quilt/lang/lexer.dart' as lexer;
+import 'package:quilt/lang/parser.dart';
 
 class QuiltRunCommand {
   Map<String, String> params;
@@ -22,8 +23,10 @@ class QuiltRunCommand {
       file.readAsString().then((String content) {
         var tokens = lexer.LexicalAnalyser('$content\n').tokenise();
         tokens.forEach((element) {
-          stdout.write(element.value + ' ' + element.type);
+          print(element.value + ' ' + element.type);
         });
+        var parser = Parser(tokens);
+        parser.parse();
       }).catchError((var errorMessage) {
         print(errorMessage);
         var exception = error.QuiltException('An unexpected error occured');
