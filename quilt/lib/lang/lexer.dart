@@ -7,7 +7,6 @@ import 'package:quilt/lang/lexer/tokens/string.dart' as strings;
 
 const digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '_'];
 
-
 List<dynamic> validTokenCharacters() {
   var tokens = [];
   var character_a = 'A'.codeUnitAt(0);
@@ -67,7 +66,7 @@ class LexicalAnalyser {
         var token = createIdentifer.createIdentifier();
         tokens.add(Token(token.identifierName, 'NAME'));
         pos.position = token.position;
-      } else if(character == '=') {
+      } else if (character == '=') {
         tokens.add(Token('=', 'ASSIGN'));
       }
 

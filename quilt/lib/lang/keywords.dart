@@ -1,4 +1,1 @@
-
-const keywords = [
-  'mut'
-];
+const keywords = ['mut'];
